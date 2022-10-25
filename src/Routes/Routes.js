@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import AllCourse from "../Components/AllCourse/AllCourse";
 import Blogs from "../Components/Blogs/Blogs";
 import Courses from "../Components/Courses/Courses";
 import Faq from "../Components/Faq/Faq";
@@ -20,6 +21,13 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
+
+        children: [
+          {
+            path: "/courses",
+            element: <AllCourse></AllCourse>,
+          },
+        ],
       },
       {
         path: "/blogs",
