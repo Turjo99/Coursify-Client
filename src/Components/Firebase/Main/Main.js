@@ -6,9 +6,9 @@ import Header from "../../Header/Header";
 const Main = () => {
   return (
     <div className="">
-      <Header></Header>
+      <Header className=""></Header>
       <Outlet></Outlet>
-      <Footer></Footer>
+      <Footer className="mt-5"></Footer>
     </div>
   );
 };
