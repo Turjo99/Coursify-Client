@@ -16,7 +16,9 @@ const Categories = () => {
     <div className="mt-5">
       {categories.map((category) => (
         <div className="mb-4 ">
-          <Button className="catbtn btn btn-dark">{category.name}</Button>
+          <Button key={category.id} className="catbtn btn btn-dark">
+            {category.name}
+          </Button>
         </div>
       ))}
     </div>
