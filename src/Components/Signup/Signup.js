@@ -2,65 +2,77 @@ import React from "react";
 import "./Signup.css";
 
 const Signup = () => {
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const image = form.imgURL.value;
+    const password = form.password.value;
+    const name = form.name.value;
+    console.log(email, name, password, image);
+  };
   return (
     <div>
-      <section class="">
-        <div class="container py-5">
-          <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-md-8 col-lg-7 col-xl-6">
+      <section className="">
+        <div className="container py-5">
+          <div className="row d-flex align-items-center justify-content-center">
+            <div className="col-md-8 col-lg-7 col-xl-6">
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                class="img-fluid mb-5"
+                className="img-fluid mb-5"
                 alt="Phone image"
               />
             </div>
-            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <h1 className="mb-5">Please SignUp</h1>
-              <form>
-                <div class="form-outline mb-4">
+            <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+              <h1 className="mb-5">Please Register</h1>
+              <form onSubmit={handleSignIn}>
+                <div className="form-outline mb-4">
                   <input
                     type="text"
                     id="form1Example13"
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     placeholder="Enter Your Name"
+                    name="name"
                   />
                 </div>
-                <div class="form-outline mb-4">
+                <div className="form-outline mb-4">
                   <input
                     type="text"
-                    id="form1Example13"
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     placeholder="Enter Your Image URL"
+                    name="imgURL"
                   />
                 </div>
-                <div class="form-outline mb-4">
+                <div className="form-outline mb-4">
                   <input
                     type="email"
                     id="form1Example13"
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     placeholder="Enter Your Email"
+                    name="email"
                   />
                 </div>
 
-                <div class="form-outline mb-4">
+                <div className="form-outline mb-4">
                   <input
                     type="password"
                     id="form1Example23"
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     placeholder="Enter Your Password"
+                    name="password"
                   />
                 </div>
 
-                <div class="d-flex justify-content-around align-items-center mb-4">
-                  <div class="form-check">
+                <div className="d-flex justify-content-around align-items-center mb-4">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="form1Example3"
                       checked
                     />
-                    <label class="form-check-label" for="form1Example3">
+                    <label className="form-check-label" for="form1Example3">
                       {" "}
                       Remember me{" "}
                     </label>
@@ -68,27 +80,31 @@ const Signup = () => {
                   <a href="#!">Forgot password?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                  Sign in
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg btn-block"
+                >
+                  Register
                 </button>
 
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                <div className="divider d-flex align-items-center my-4">
+                  <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                 </div>
 
                 <a
-                  class="btn btn-primary btn-block d-block w-75 mx-auto mb-3 "
+                  className="btn btn-primary btn-block d-block w-75 mx-auto mb-3 "
                   href="#!"
                   role="button"
                 >
-                  <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+                  <i className="fab fa-facebook-f me-2"></i>Continue with
+                  Facebook
                 </a>
                 <a
-                  class="btn btn-primary d-block btn-block w-75 mx-auto"
+                  className="btn btn-primary d-block btn-block w-75 mx-auto"
                   href="#!"
                   role="button"
                 >
-                  <i class="fab fa-twitter me-2"></i>Continue with Twitter
+                  <i className="fab fa-twitter me-2"></i>Continue with Twitter
                 </a>
               </form>
             </div>

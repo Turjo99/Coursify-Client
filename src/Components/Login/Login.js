@@ -22,6 +22,7 @@ const Login = () => {
                     id="form1Example13"
                     class="form-control form-control-lg"
                     placeholder="Enter Your Email"
+                    name="email"
                   />
                 </div>
 
@@ -31,6 +32,7 @@ const Login = () => {
                     id="form1Example23"
                     class="form-control form-control-lg"
                     placeholder="Enter Your Password"
+                    name="password"
                   />
                 </div>
 

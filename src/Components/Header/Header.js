@@ -30,7 +30,7 @@ const Header = () => {
                 Login
               </Link>
               <Link to={"/signup"} className="links">
-                Signup
+                Register
               </Link>
             </Nav>
           </Navbar.Collapse>
