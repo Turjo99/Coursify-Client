@@ -1,6 +1,20 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../Context/UserContext";
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+  const login = (event) => {
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <section class="">
@@ -10,12 +24,11 @@ const Login = () => {
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                 class="img-fluid mb-5"
-                alt="Phone image"
               />
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
               <h1 className="mb-5">Please Login</h1>
-              <form>
+              <form onSubmit={login}>
                 <div class="form-outline mb-4">
                   <input
                     type="email"
@@ -60,21 +73,6 @@ const Login = () => {
                 <div class="divider d-flex align-items-center my-4">
                   <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                 </div>
-
-                <a
-                  class="btn btn-primary btn-block d-block w-75 mx-auto mb-3 "
-                  href="#!"
-                  role="button"
-                >
-                  <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
-                </a>
-                <a
-                  class="btn btn-primary d-block btn-block w-75 mx-auto"
-                  href="#!"
-                  role="button"
-                >
-                  <i class="fab fa-twitter me-2"></i>Continue with Twitter
-                </a>
               </form>
             </div>
           </div>

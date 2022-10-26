@@ -1,10 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Context/UserContext";
 import "./Signup.css";
 
 const Signup = () => {
-  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState(false);
+  const { createUser, googleSignIn } = useContext(AuthContext);
   const register = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +19,16 @@ const Signup = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setError(true);
+      })
+      .catch((error) => console.error(error));
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError(true);
       })
       .catch((error) => console.error(error));
   };
@@ -96,25 +108,22 @@ const Signup = () => {
                   Register
                 </button>
 
+                {error && (
+                  <div className="text-success my-3 fw-bolder">
+                    User Created Successfully
+                  </div>
+                )}
+
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                 </div>
 
-                <a
+                <button
                   className="btn btn-primary btn-block d-block w-75 mx-auto mb-3 "
-                  href="#!"
-                  role="button"
+                  onClick={handleGoogleSignIn}
                 >
-                  <i className="fab fa-facebook-f me-2"></i>Continue with
-                  Facebook
-                </a>
-                <a
-                  className="btn btn-primary d-block btn-block w-75 mx-auto"
-                  href="#!"
-                  role="button"
-                >
-                  <i className="fab fa-twitter me-2"></i>Continue with Twitter
-                </a>
+                  <i className="fab fa-facebook-f me-2"></i>Sign In with Google
+                </button>
               </form>
             </div>
           </div>
