@@ -1,8 +1,11 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../Context/UserContext";
 import "./Signup.css";
 
 const Signup = () => {
-  const handleSignIn = (event) => {
+  const { createUser } = useContext(AuthContext);
+  const register = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -10,6 +13,12 @@ const Signup = () => {
     const password = form.password.value;
     const name = form.name.value;
     console.log(email, name, password, image);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div>
@@ -25,7 +34,7 @@ const Signup = () => {
             </div>
             <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
               <h1 className="mb-5">Please Register</h1>
-              <form onSubmit={handleSignIn}>
+              <form onSubmit={register}>
                 <div className="form-outline mb-4">
                   <input
                     type="text"
