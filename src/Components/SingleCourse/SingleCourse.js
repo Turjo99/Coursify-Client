@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SingleCourse.css";
 
 const SingleCourse = ({ course }) => {
-  const { cname, img, description } = course;
+  const { _id, cname, img, description } = course;
   return (
-    <div>
+    <div className="">
       <section class="dark">
         <div class="container py-4">
           <article class="postcard dark blue">
@@ -24,7 +25,9 @@ const SingleCourse = ({ course }) => {
               <div class="postcard__preview-txt">
                 {description.slice(0, 200)}
               </div>
-              <button className="btn btn-primary w-25">Show More</button>
+              <Link to={`/courses/${_id}`}>
+                <button className="btn btn-primary w-25">Show More</button>
+              </Link>
             </div>
           </article>
         </div>
