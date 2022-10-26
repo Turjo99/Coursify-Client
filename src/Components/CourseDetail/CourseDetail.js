@@ -33,7 +33,7 @@ const CourseDetail = () => {
         </div>
         <Link to={`/checkout/${_id}`}>
           <button className="btn btn-primary w-75 mx-auto fw-bolder fs-4 my-5">
-            Buy Now
+            Get Premium Access
           </button>
         </Link>
       </div>

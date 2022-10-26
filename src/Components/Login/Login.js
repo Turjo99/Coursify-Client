@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState(false);
   const { loginUser } = useContext(AuthContext);
   const login = (event) => {
     const form = event.target;
@@ -12,6 +15,8 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        navigate("/courses");
+        setError(true);
       })
       .catch((error) => console.log(error));
   };
@@ -67,8 +72,10 @@ const Login = () => {
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-                  Sign in
+                  Login
                 </button>
+
+                {error && <div className="">Login Successful</div>}
 
                 <div class="divider d-flex align-items-center my-4">
                   <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>

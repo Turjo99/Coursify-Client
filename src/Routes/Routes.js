@@ -9,6 +9,7 @@ import Faq from "../Components/Faq/Faq";
 import Main from "../Components/Firebase/Main/Main";
 import Hero from "../Components/Hero/Hero";
 import Login from "../Components/Login/Login";
+import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Signup from "../Components/Signup/Signup";
 
 export const router = createBrowserRouter([
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <CheckOut></CheckOut>,
+        element: (
+          <PrivateRoute>
+            <CheckOut></CheckOut>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/courses/${params.id}`),
       },
