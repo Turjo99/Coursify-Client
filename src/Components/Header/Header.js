@@ -39,12 +39,20 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav>
-              <Link to={"/login"} className="links">
-                Login
-              </Link>
-              <Link to={"/signup"} className="links">
-                Register
-              </Link>
+              {user?.uid ? (
+                <></>
+              ) : (
+                <div>
+                  {" "}
+                  <Link to={"/login"} className="links">
+                    Login
+                  </Link>
+                  <Link to={"/signup"} className="links">
+                    Register
+                  </Link>
+                </div>
+              )}
+
               {user?.uid ? (
                 <button className="btn btn-secondary" onClick={handleLogOut}>
                   LogOut
