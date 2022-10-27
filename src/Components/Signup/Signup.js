@@ -9,6 +9,7 @@ const Provider = new GoogleAuthProvider();
 
 const Signup = () => {
   const [error, setError] = useState(false); //setting default state
+  const [passwordError, setPasswordError] = useState("");
 
   const { createUser, googleSignIn, updateUserProfile, githubSignIn } =
     useContext(AuthContext);
@@ -30,7 +31,7 @@ const Signup = () => {
         handleUpdateProfileUser(name, image);
       })
       //Showed error message if user doesnt give valid input
-      .catch((error) => console.error(error.message));
+      .catch((error) => setPasswordError(error.message));
   };
   //updating user information
   const handleUpdateProfileUser = (name, image) => {
@@ -48,6 +49,7 @@ const Signup = () => {
         const user = result.user;
         console.log(user);
         setError(true);
+        setPasswordError("");
       })
       .catch((error) => console.error(error));
   };
@@ -57,6 +59,7 @@ const Signup = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        setPasswordError("");
       })
       .catch((err) => console.error(err));
   };
@@ -139,9 +142,10 @@ const Signup = () => {
                 {/* Conditional Rendering */}
                 {error && (
                   <div className="text-success my-3 fw-bolder">
-                    User Created Successfully
+                    User Successfully Logged In
                   </div>
                 )}
+                <p className="mt-4">{passwordError}</p>
 
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>

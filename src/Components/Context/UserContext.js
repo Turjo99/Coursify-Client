@@ -14,27 +14,33 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 const auth = getAuth(app);
-// const Provider = new GoogleAuthProvider();
+
 const githubProvider = new GithubAuthProvider();
 export const AuthContext = createContext();
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState([]); //updating user each time user change
+  const [loading, setLoading] = useState(true); //Loading State for avoiding the reload issue on private route
+  // for creating user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  // for sign in user with email and password
   const loginUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+  // for google signin
   const googleSignIn = (Provider) => {
     return signInWithPopup(auth, Provider);
   };
+  // for github signin
   const githubSignIn = () => {
     return signInWithPopup(auth, githubProvider);
   };
+  // for logout
   const logout = () => {
     return signOut(auth);
   };
+  // for updating user name ,image etc information
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
   };

@@ -20,7 +20,7 @@ const Header = () => {
   };
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
+      <Navbar collapseOnSelect expand="lg" className="nav" variant="dark">
         <Container>
           <Link className="logo fs-4 mx-auto mx-md-start" to={"/"}>
             Coursify
@@ -66,7 +66,7 @@ const Header = () => {
               )}
 
               {user?.uid ? (
-                <div className="my-auto mx-2">{user.displayName}</div>
+                <div className="my-auto mx-2 fs-5">{user.displayName}</div>
               ) : (
                 <></>
               )}

@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const CheckOut = () => {
   const course = useLoaderData();
-  const { cname, img, price } = course[0];
+  const { cname, img, price } = course[0]; //destructuring the data from object
   console.log(course);
   return (
     <div>

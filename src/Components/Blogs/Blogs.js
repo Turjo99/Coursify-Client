@@ -3,7 +3,8 @@ import React from "react";
 const Blogs = () => {
   return (
     <div>
-      <div className="card mb-3 bg-dark w-75 mx-auto">
+      {/* Blog Questions */}
+      <div className="card my-3 bg-dark w-75 mx-auto border-white">
         <div className="card-body">
           <h1 className="card-title"> what is cors</h1>
           <p className="card-text">
@@ -17,7 +18,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="card mb-3 bg-dark w-75 mx-auto">
+      <div className="card mb-3 bg-dark w-75 mx-auto border-white">
         <div className="card-body">
           <h1 className="card-title">How does the private route work?</h1>
           <p className="card-text">
@@ -37,7 +38,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="card mb-3 bg-dark w-75 mx-auto">
+      <div className="card mb-3 bg-dark w-75 mx-auto border-white">
         <div className="card-body">
           <h1 className="card-title">
             Why are you using firebase? What other options do you have to
@@ -66,7 +67,7 @@ const Blogs = () => {
           </p>
         </div>
       </div>
-      <div className="card mb-3 bg-dark w-75 mx-auto">
+      <div className="card mb-3 bg-dark w-75 mx-auto border-white">
         <div className="card-body">
           <h1 className="card-title">What is Node? How does Node work?</h1>
           <p className="card-text">

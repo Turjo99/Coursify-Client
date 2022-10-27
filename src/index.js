@@ -8,6 +8,7 @@ import UserContext from "./Components/Context/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    {/* Using Context API Through the website  */}
     <UserContext>
       <App />
     </UserContext>

@@ -15,7 +15,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/"; //redirect user if came from any specific private route
     console.log(email);
     loginUser(email, password)
       .then((res) => {
@@ -24,10 +24,12 @@ const Login = () => {
         navigate(from, { replace: true });
         setError(true);
       })
+      // handling error message
       .catch((error) => setUserError(error.message));
   };
   return (
     <div>
+      {/* Login Page Design */}
       <section className="text-white">
         <div className="container py-5">
           <div className="row d-flex align-items-center justify-content-center">
@@ -83,7 +85,7 @@ const Login = () => {
                 >
                   Login
                 </button>
-
+                {/* conditional rendering */}
                 {error && <div className="">Login Successful</div>}
                 <p className="text-danger">{userError}</p>
 

@@ -8,6 +8,7 @@ const AllCourse = () => {
 
   return (
     <div className="grid container">
+      {/* Showing each course  */}
       {allCourse.map((course) => {
         return (
           <div>
