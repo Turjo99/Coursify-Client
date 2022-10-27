@@ -29,22 +29,28 @@ export const router = createBrowserRouter([
           {
             path: "/courses",
             element: <AllCourse></AllCourse>,
-            loader: () => fetch("http://localhost:5000/courses"),
+            loader: () =>
+              fetch("https://server-site-2z80pnrc4-turjo99.vercel.app/courses"),
           },
           {
             path: "/courses/:id",
             element: <CourseDetail></CourseDetail>,
             loader: ({ params }) =>
-              fetch(`http://localhost:5000/courses/${params.id}`),
+              fetch(
+                `https://server-site-2z80pnrc4-turjo99.vercel.app/courses/${params.id}`
+              ),
+          },
+          {
+            path: "courses/categories/:id",
+            element: <AllCourse></AllCourse>,
+            loader: ({ params }) =>
+              fetch(
+                `https://server-site-2z80pnrc4-turjo99.vercel.app/categories/${params.id}`
+              ),
           },
         ],
       },
-      {
-        path: "/categories/:id",
-        element: <AllCourse></AllCourse>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/categories/${params.id}`),
-      },
+
       {
         path: "/checkout/:id",
         element: (
@@ -53,7 +59,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(
+            `https://server-site-2z80pnrc4-turjo99.vercel.app/courses/${params.id}`
+          ),
       },
 
       {

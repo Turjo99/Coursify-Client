@@ -8,7 +8,7 @@ import("./Categories.css");
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://server-site-2z80pnrc4-turjo99.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -17,7 +17,7 @@ const Categories = () => {
     <div className="mt-5">
       {categories.map((category) => (
         <div className="mb-4 ">
-          <Link to={`/categories/${category.id}`}>
+          <Link to={`courses/categories/${category.id}`}>
             {" "}
             <Button key={category.id} className="catbtn btn btn-dark">
               {category.name}

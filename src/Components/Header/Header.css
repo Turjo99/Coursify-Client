@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dr+Sugiyama&family=Pacifico&family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap");
+body {
+  font-family: "Pacifico", cursive;
+  font-family: "Poppins", sans-serif;
+}
+.logo {
+  font-family: "Diplomata SC", cursive;
+  color: aliceblue;
+}
+.logo:hover {
+  color: aliceblue;
+}
 .links {
   text-decoration: none;
   color: white;

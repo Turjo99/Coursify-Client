@@ -22,10 +22,13 @@ const Header = () => {
     <div>
       <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Logo</Navbar.Brand>
+          <Link className="logo fs-4 mx-auto mx-md-start" to={"/"}>
+            Coursify
+          </Link>
+
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="mx-auto">
               <Link to={"/courses"} className="links">
                 Courses
               </Link>
@@ -68,7 +71,7 @@ const Header = () => {
                 <></>
               )}
               {user?.uid ? (
-                <div className="my-auto">
+                <div className="my-auto mx-2">
                   <img
                     src={user.photoURL}
                     alt="userimg"
