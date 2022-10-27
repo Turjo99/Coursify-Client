@@ -1,30 +1,33 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
   const login = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    const from = location.state?.from?.pathname || "/";
     console.log(email);
     loginUser(email, password)
       .then((res) => {
         const user = res.user;
         console.log(user);
-        navigate("/courses");
+        navigate(from, { replace: true });
         setError(true);
       })
       .catch((error) => console.log(error));
   };
   return (
     <div>
-      <section class="">
+      <section class="text-white">
         <div class="container py-5">
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-md-8 col-lg-7 col-xl-6">
@@ -79,9 +82,9 @@ const Login = () => {
 
                 {error && <div className="">Login Successful</div>}
 
-                <div class="divider d-flex align-items-center my-4">
-                  <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-                </div>
+                <p>
+                  Dont have a account? Please <Link to="/signup">Register</Link>
+                </p>
               </form>
             </div>
           </div>

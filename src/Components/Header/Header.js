@@ -6,16 +6,17 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
+import { MDBSwitch } from "mdb-react-ui-kit";
 import("./Header.css");
 
 const Header = () => {
   const { logout, user } = useContext(AuthContext);
   const handleLogOut = () => {
-    logout().then(() =>
-      console
-        .log("Sign Out successfully")
-        .catch((error) => console.error(error))
-    );
+    logout()
+      .then(() => {
+        console.log("Sign Out successfully");
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div>
@@ -68,11 +69,23 @@ const Header = () => {
               )}
               {user?.uid ? (
                 <div className="my-auto">
-                  <img src="" alt="userimg" title={user.displayName} />
+                  <img
+                    src={user.photoURL}
+                    alt="userimg"
+                    title={user.displayName}
+                    className="userImg"
+                  />
                 </div>
               ) : (
                 <></>
               )}
+              <div className="my-auto">
+                <MDBSwitch
+                  className=""
+                  defaultChecked
+                  id="flexSwitchCheckChecked"
+                />
+              </div>
             </Nav>
           </Navbar.Collapse>
         </Container>

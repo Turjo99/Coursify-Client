@@ -7,7 +7,8 @@ import "./Signup.css";
 
 const Signup = () => {
   const [error, setError] = useState(false);
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn, updateUserProfile } =
+    useContext(AuthContext);
   const register = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,8 +22,18 @@ const Signup = () => {
         const user = result.user;
         console.log(user);
         setError(true);
+        handleUpdateProfileUser(name, image);
       })
       .catch((error) => console.error(error));
+  };
+  const handleUpdateProfileUser = (name, image) => {
+    const profile = {
+      displayName: name,
+      photoURL: image,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((err) => console.error(err));
   };
   const handleGoogleSignIn = () => {
     googleSignIn()

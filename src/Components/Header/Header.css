@@ -12,3 +12,7 @@
 
   transition: 0.5s;
 }
+.userImg {
+  width: 30px;
+  border-radius: 50%;
+}
