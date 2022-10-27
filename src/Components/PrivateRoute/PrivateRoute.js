@@ -10,13 +10,13 @@ const PrivateRoute = ({ children }) => {
     return (
       <div>
         <div
-          class="
+          className="
       spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
         text-yellow-500
       "
           role="status"
         >
-          <span class="visually-hidden">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     );

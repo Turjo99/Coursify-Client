@@ -1,32 +1,38 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../Context/UserContext";
 import "./Signup.css";
+const Provider = new GoogleAuthProvider();
 
 const Signup = () => {
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false); //setting default state
 
   const { createUser, googleSignIn, updateUserProfile, githubSignIn } =
     useContext(AuthContext);
   const register = (event) => {
     event.preventDefault();
+
     const form = event.target;
     const email = form.email.value;
     const image = form.imgURL.value;
     const password = form.password.value;
     const name = form.name.value;
     console.log(email, name, password, image);
+    //took the values from form and used it to create user
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setError(true);
+        setError(true); //changing state
         handleUpdateProfileUser(name, image);
       })
-      .catch((error) => console.error(error));
+      //Showed error message if user doesnt give valid input
+      .catch((error) => console.error(error.message));
   };
+  //updating user information
   const handleUpdateProfileUser = (name, image) => {
     const profile = {
       displayName: name,
@@ -35,9 +41,9 @@ const Signup = () => {
     updateUserProfile(profile)
       .then(() => {})
       .catch((err) => console.error(err));
-  };
+  }; //sign in with google with auth and provider
   const handleGoogleSignIn = () => {
-    googleSignIn()
+    googleSignIn(Provider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -45,6 +51,7 @@ const Signup = () => {
       })
       .catch((error) => console.error(error));
   };
+  //Github Sign In
   const handleGithubSignIn = () => {
     githubSignIn()
       .then((res) => {
@@ -55,6 +62,7 @@ const Signup = () => {
   };
   return (
     <div>
+      {/* Register Section  */}
       <section className="">
         <div className="container py-5">
           <div className="row d-flex align-items-center justify-content-center">
@@ -128,7 +136,7 @@ const Signup = () => {
                 >
                   Register
                 </button>
-
+                {/* Conditional Rendering */}
                 {error && (
                   <div className="text-success my-3 fw-bolder">
                     User Created Successfully

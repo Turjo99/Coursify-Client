@@ -9,10 +9,12 @@ import Faq from "../Components/Faq/Faq";
 import Main from "../Components/Firebase/Main/Main";
 import Hero from "../Components/Hero/Hero";
 import Login from "../Components/Login/Login";
+import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
 import Signup from "../Components/Signup/Signup";
 
 export const router = createBrowserRouter([
+  //All the routes of the websites
   {
     path: "/",
     element: <Main></Main>,
@@ -29,6 +31,7 @@ export const router = createBrowserRouter([
           {
             path: "/courses",
             element: <AllCourse></AllCourse>,
+            //Dynamically Loading Data for the page
             loader: () =>
               fetch("https://server-site-2z80pnrc4-turjo99.vercel.app/courses"),
           },
@@ -36,6 +39,7 @@ export const router = createBrowserRouter([
             path: "/courses/:id",
             element: <CourseDetail></CourseDetail>,
             loader: ({ params }) =>
+              //Dynamically Loading Data for the page
               fetch(
                 `https://server-site-2z80pnrc4-turjo99.vercel.app/courses/${params.id}`
               ),
@@ -44,6 +48,7 @@ export const router = createBrowserRouter([
             path: "courses/categories/:id",
             element: <AllCourse></AllCourse>,
             loader: ({ params }) =>
+              //Dynamically Loading Data for the page
               fetch(
                 `https://server-site-2z80pnrc4-turjo99.vercel.app/categories/${params.id}`
               ),
@@ -58,6 +63,7 @@ export const router = createBrowserRouter([
             <CheckOut></CheckOut>
           </PrivateRoute>
         ),
+        //Dynamically Loading Data for the page
         loader: ({ params }) =>
           fetch(
             `https://server-site-2z80pnrc4-turjo99.vercel.app/courses/${params.id}`
@@ -79,6 +85,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "*",
+        element: <PageNotFound></PageNotFound>, //error route
       },
     ],
   },

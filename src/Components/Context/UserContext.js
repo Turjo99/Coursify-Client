@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   GithubAuthProvider,
-  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -15,7 +14,7 @@ import {
 import { useEffect } from "react";
 import { useState } from "react";
 const auth = getAuth(app);
-const Provider = new GoogleAuthProvider();
+// const Provider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 export const AuthContext = createContext();
 const UserContext = ({ children }) => {
@@ -27,7 +26,7 @@ const UserContext = ({ children }) => {
   const loginUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const googleSignIn = () => {
+  const googleSignIn = (Provider) => {
     return signInWithPopup(auth, Provider);
   };
   const githubSignIn = () => {

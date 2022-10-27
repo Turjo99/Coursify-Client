@@ -6,23 +6,23 @@ const SingleCourse = ({ course }) => {
   const { _id, cname, img, description } = course;
   return (
     <div className="">
-      <section class="dark">
-        <div class="container py-4">
-          <article class="postcard dark blue">
-            <a class="postcard__img_link" href="#">
-              <img class="postcard__img" src={img} alt="Image Title" />
+      <section className="dark">
+        <div className="container py-4">
+          <article className="postcard dark blue">
+            <a className="postcard__img_link" href="#">
+              <img className="postcard__img" src={img} alt="Image Title" />
             </a>
-            <div class="postcard__text">
-              <h1 class="postcard__title blue">
+            <div className="postcard__text">
+              <h1 className="postcard__title blue">
                 <a href="#">{cname}</a>
               </h1>
-              <div class="postcard__subtitle small">
+              <div className="postcard__subtitle small">
                 <time datetime="2020-05-25 12:00:00">
-                  <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                  <i className="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
                 </time>
               </div>
-              <div class="postcard__bar"></div>
-              <div class="postcard__preview-txt">
+              <div className="postcard__bar"></div>
+              <div className="postcard__preview-txt">
                 {description.slice(0, 200)}
               </div>
               <Link to={`/courses/${_id}`}>
