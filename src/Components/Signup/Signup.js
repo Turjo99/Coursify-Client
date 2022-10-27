@@ -7,7 +7,8 @@ import "./Signup.css";
 
 const Signup = () => {
   const [error, setError] = useState(false);
-  const { createUser, googleSignIn, updateUserProfile } =
+
+  const { createUser, googleSignIn, updateUserProfile, githubSignIn } =
     useContext(AuthContext);
   const register = (event) => {
     event.preventDefault();
@@ -43,6 +44,14 @@ const Signup = () => {
         setError(true);
       })
       .catch((error) => console.error(error));
+  };
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <div>
@@ -135,6 +144,12 @@ const Signup = () => {
                   onClick={handleGoogleSignIn}
                 >
                   <i className="fab fa-facebook-f me-2"></i>Sign In with Google
+                </button>
+                <button
+                  className="btn btn-primary btn-block d-block w-75 mx-auto mb-3 "
+                  onClick={handleGithubSignIn}
+                >
+                  <i className="fab fa-facebook-f me-2"></i>Sign In with github
                 </button>
               </form>
             </div>
