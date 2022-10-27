@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import("./Categories.css");
 
 const Categories = () => {
@@ -16,9 +17,12 @@ const Categories = () => {
     <div className="mt-5">
       {categories.map((category) => (
         <div className="mb-4 ">
-          <Button key={category.id} className="catbtn btn btn-dark">
-            {category.name}
-          </Button>
+          <Link to={`/categories/${category.id}`}>
+            {" "}
+            <Button key={category.id} className="catbtn btn btn-dark">
+              {category.name}
+            </Button>
+          </Link>
         </div>
       ))}
     </div>

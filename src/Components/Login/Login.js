@@ -8,9 +8,11 @@ const Login = () => {
   const [error, setError] = useState(false);
   const { loginUser } = useContext(AuthContext);
   const login = (event) => {
+    event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email);
     loginUser(email, password)
       .then((res) => {
         const user = res.user;

@@ -28,9 +28,9 @@ const Header = () => {
               <Link to={"/courses"} className="links">
                 Courses
               </Link>
-              <Link to={"/checkout"} className="links">
+              {/* <Link to={"/checkout"} className="links">
                 Checkout
-              </Link>
+              </Link> */}
               <Link to={"/blogs"} className="links">
                 Blogs
               </Link>
@@ -45,8 +45,26 @@ const Header = () => {
               <Link to={"/signup"} className="links">
                 Register
               </Link>
-              <button onClick={handleLogOut}>LogOut</button>
-              {user?.uid ? <div className="">{user.email}</div> : <></>}
+              {user?.uid ? (
+                <button className="btn btn-secondary" onClick={handleLogOut}>
+                  LogOut
+                </button>
+              ) : (
+                <></>
+              )}
+
+              {user?.uid ? (
+                <div className="my-auto mx-2">{user.displayName}</div>
+              ) : (
+                <></>
+              )}
+              {user?.uid ? (
+                <div className="my-auto">
+                  <img src="" alt="userimg" title={user.displayName} />
+                </div>
+              ) : (
+                <></>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
