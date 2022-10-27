@@ -31,7 +31,7 @@ const Signup = () => {
         handleUpdateProfileUser(name, image);
       })
       //Showed error message if user doesnt give valid input
-      .catch((error) => setPasswordError(error.message));
+      .catch((error) => console.error(error.message));
   };
   //updating user information
   const handleUpdateProfileUser = (name, image) => {
@@ -49,7 +49,6 @@ const Signup = () => {
         const user = result.user;
         console.log(user);
         setError(true);
-        setPasswordError("");
       })
       .catch((error) => console.error(error));
   };
@@ -59,7 +58,7 @@ const Signup = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
-        setPasswordError("");
+        // setPasswordError("");
       })
       .catch((err) => console.error(err));
   };
@@ -145,7 +144,7 @@ const Signup = () => {
                     User Successfully Logged In
                   </div>
                 )}
-                <p className="mt-4">{passwordError}</p>
+                {/* <p className="mt-4">{passwordError}</p> */}
 
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
